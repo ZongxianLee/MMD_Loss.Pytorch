@@ -27,7 +27,7 @@ class MMD_loss(nn.Module):
 
     def forward(self, source, target):
     	batch_size = int(source.size()[0])
-    	kernels = guassian_kernel(source, target, kernel_mul=self.kernel_mul, kernel_num=self.kernel_num, fix_sigma=self.fix_sigma)
+    	kernels = self.guassian_kernel(source, target, kernel_mul=self.kernel_mul, kernel_num=self.kernel_num, fix_sigma=self.fix_sigma)
     	XX = kernels[:batch_size, :batch_size]
     	YY = kernels[batch_size:, batch_size:]
     	XY = kernels[:batch_size, batch_size:]
